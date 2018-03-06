@@ -1,0 +1,152 @@
+{% extends 'admin_temp.html' %}
+{% load staticfiles %}
+{% block head %}
+        <link href="{% static 'css/summernote.css' %}" rel="stylesheet">
+    <link href="{%  static 'css/summernote-bs3.css' %}" rel="stylesheet">
+    <link href="{%  static 'css/sweetalert.css' %}" rel="stylesheet">
+{% endblock %}
+{% block mian %}
+<body class="gray-bg">
+
+    <div class="wrapper wrapper-content">
+
+
+<div class="row">
+       <label>标题</label> <input type="text" style="width: 400px" id="title" >
+        <br>
+        <br>
+</div>
+
+
+   <div class="row">
+            <div class="col-sm-12" >
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>内容</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_editors.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="form_editors.html#">选项1</a>
+                                </li>
+                                <li><a href="form_editors.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content no-padding">
+
+                        <div class="summernote">
+                            <h2>输入内容</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div  class="row" style="text-align: center">
+            <button id='but'> 提交</button>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content">
+
+                        <h2>
+                                说明
+                            </h2>
+                        <p>
+                            用于提交文章内容
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+
+
+
+      <!-- 自定义js -->
+    <script src="{% static 'js/content.js' %}"></script>
+
+
+    <!-- SUMMERNOTE -->
+    <script src="{% static 'js/summernote/summernote.min.js' %}"></script>
+    <script src="{% static 'js/summernote/summernote-zh-CN.js' %}"></script>
+      <!-- Sweet alert -->
+    <script src="{% static 'js/sweetalert.min.js' %}"></script>
+
+
+  <script>
+    document.getElementById('but').onclick=function () {
+        formdata=new FormData();
+        var title=$('#title').val();
+        var conten=$('.summernote').code();
+        data={'title':title,'conten':conten}
+        $.ajax(
+                {
+                    url:'/addArtcle/',
+                    type:'POST',
+                    datatype:'JSON',
+                    headers:{'X-CSRFToken':'{{ csrf_token }}'},
+                    data:data,
+                    success:function (arg) {
+                          swal({
+                   title: "提示框",
+                   text: "提交成功"
+               });
+
+                    }
+                }
+        )
+
+    }
+    </script>
+   <script>
+        $(document).ready(function () {
+
+            $('.summernote').summernote({
+                lang: 'zh-CN',
+                 height: 400,
+            });
+
+        });
+        var edit = function () {
+            $("#eg").addClass("no-padding");
+            $('.click2edit').summernote({
+                lang: 'zh-CN',
+                focus: true
+            });
+        };
+        var save = function () {
+            $("#eg").removeClass("no-padding");
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
+    </script>
+    
+    
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,15 @@
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (1, 'kkkk', '2018-03-06 15:31:19.714992', 1, 500);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (2, 'dssd', '2018-03-06 15:52:15.228920', 1, 500);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (3, 'ss', '2018-03-06 16:27:30.183548', 1, 40);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (4, 'xzxcxcx', '2018-03-06 16:38:35.687949', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (5, '测试测试测试测试测试', '2018-03-06 16:45:09.392705', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (6, '测试测试测试测试测试', '2018-03-06 16:45:10.735533', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (7, '测试测试测试测试测试', '2018-03-06 16:45:12.032728', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (8, '测试测试测试测试测试', '2018-03-06 16:45:12.655268', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (9, '测试测试测试测试测试', '2018-03-06 16:45:16.247711', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (10, '测试测试测试测试测试', '2018-03-06 16:45:16.862952', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (11, '测试测试测试测试测试', '2018-03-06 16:45:17.335542', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (12, '测试测试测试测试测试', '2018-03-06 16:45:17.561056', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (13, '测试测试测试测试测试', '2018-03-06 16:45:17.736720', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (14, '测试测试测试测试测试', '2018-03-06 16:45:17.865166', 1, 1);
+INSERT INTO `comment`(`id`, `conten`, `set_time`, `publisher_id`, `article_id`) VALUES (15, '测试测试测试测试测试', '2018-03-06 16:45:18.017232', 1, 1);

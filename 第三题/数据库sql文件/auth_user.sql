@@ -1,0 +1,1 @@
+INSERT INTO `auth_user`(`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES (1, 'pbkdf2_sha256$100000$YF3m83pYDQhT$ptrsVraFAkC+OOoXM2tpNd+k3X8xdxyuTElXxEcH1kk=', '2018-03-06 09:55:08.152396', 1, 'wangjing', '', '', '627656470@qq.com', 1, 1, '2018-03-06 09:52:20.534719');

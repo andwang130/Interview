@@ -1,0 +1,59 @@
+{% extends 'templates.html' %}
+{% block mian %}
+     <div id="content">
+     <div class="row contactus-list" style="align-content: center">
+           <div class="col-lg-4 col-xs-4 animate-box" data-animate-effect="fadeInRight">
+           </div>
+        <div class="col-lg-5 col-xs-5 animate-box" data-animate-effect="fadeInRight">
+          <form id="form1">
+            <label>注册</label>
+            <input type="text" name="name" id="name" placeholder="账号" required="required">
+            <input type="password" name="mobile" id="mobile" placeholder="密码" required="required">
+              <input type="password" name="mobile" id="mobile1" placeholder="重复密码" required="required">
+                <span style="color: red" id="tip"></span>
+            <input type="submit" value="提交">
+          </form>
+
+        </div>
+           <div class="col-lg-3 col-xs-3 animate-box" data-animate-effect="fadeInRight">
+      </div>
+     </div>
+     </div>
+    <script>
+    $('#form1').submit(function () {
+        var username=$('#name').val()
+        var paswd=$('#mobile').val()
+        var paswd1=$('#mobile1').val()
+        if(username.length>25){
+            $('#tip').text('用户名不能超过25位')
+            return false
+        }
+        if(paswd.length>25){
+            $('#tip').text('密码不能超过25位')
+            return false
+        }
+        if(paswd!=paswd1){
+              $('#tip').text('两次密码不一致')
+            return false
+        }
+        data={'name':username,'paswd':paswd}
+        $.ajax({
+            url:'/user_register/',
+            data:data,
+            dataType:'JSON',
+            type:'POST',
+            headers:{'X-CSRFToken':'{{ csrf_token }}'},
+            success:function (arg) {
+                if(arg.eercode==0){
+                    window.location.href='/index'
+        }
+        else {
+                    $('#tip').text('用户已经存在')
+                }
+
+            }
+        })
+    return false
+    })
+    </script>
+{% endblock %}

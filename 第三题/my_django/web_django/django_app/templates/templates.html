@@ -1,0 +1,89 @@
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- Bootstrap -->
+     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {% load staticfiles %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <link href="{% static 'css/animate1.css' %}" rel="stylesheet">
+    <link href="{% static 'css/ysemm.css' %}" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    </head>
+<body class="  pace-done">
+ <div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+      <!--  loader  -->
+      <div id="myloader" style="display: none;">
+        <div class="loader">
+          <div class="grid">
+            <div class="cube cube1"></div>
+            <div class="cube cube2"></div>
+            <div class="cube cube3"></div>
+            <div class="cube cube4"></div>
+            <div class="cube cube5"></div>
+            <div class="cube cube6"></div>
+            <div class="cube cube7"></div>
+            <div class="cube cube8"></div>
+            <div class="cube cube9"></div>
+          </div>
+        </div>
+      </div>
+
+
+      <header>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-xs-6">
+              <img src="{% static '/images/logo.png.png'%}" style="height: 45px" alt=>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+              <ul class="nav nav-pills">
+                <li class="active" id="index"><a href="/index">公司首页</a></li>
+
+                <li id="comp"><a href="/compa">企业新闻</a></li>
+
+                <li id="news"><a href="/news" rel="dropmenu56">行业新闻</a></li>
+                  {% if user %}
+                  <li id="news"><a href="/news" rel="dropmenu56">{{ user }}</a></li>
+                     <li id="news"><a href="/user_cancel" rel="dropmenu56">注销</a></li>
+                      {% else %}
+                      <li id="news"><a href="/user_login" rel="dropmenu56">登陆</a></li>
+                      <li id="news"><a href="/user_register" rel="dropmenu56">注册</a></li>
+                  {% endif %}
+
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+ {% block mian %}
+
+ {% endblock %}
+<footer class="home-footer">
+      <!-- 友情链接 -->
+            <div class="box-title-flink"><span>友情链接</span></div>
+
+
+
+  <div class="footer">
+    <p></p>
+    <p>
+      <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank" rel="nofollow">备案号：xxxxxxxx</a>
+    </p>
+  </div>
+
+
+</footer>
+</body>
+</html>

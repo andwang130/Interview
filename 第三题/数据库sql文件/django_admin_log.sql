@@ -1,0 +1,2 @@
+INSERT INTO `django_admin_log`(`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES (1, '2018-03-06 09:56:44.744020', '1', 'ArticleType object (1)', 1, '[{\"added\": {}}]', 9, 1);
+INSERT INTO `django_admin_log`(`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES (2, '2018-03-06 09:56:50.502918', '2', 'ArticleType object (2)', 1, '[{\"added\": {}}]', 9, 1);

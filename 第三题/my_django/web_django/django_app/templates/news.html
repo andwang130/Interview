@@ -1,0 +1,72 @@
+{% extends 'templates.html' %}
+{% block mian %}
+    <div class="position">
+  <div class="container">
+    <span class="position-home"></span>
+    <a href="/index">主页</a> &gt; <a href="/news/">行业新闻</a>
+  </div>
+</div>
+    <div id="content">
+  <div class="container news-container">
+    <div class="row">
+      <div class="col-lg-12 col-xs-12">
+        <div class="nav-news">
+          <ul>
+            <li class="active"><a href="/news">行业新闻</a>
+            <div class="triangle1"></div>
+            <div class="triangle2"></div>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-12 col-xs-12">
+
+      <div class="list-news">
+        <ul>
+ {% for i in article %}
+      <li class="list-item">
+
+           <div class="item-info">
+             <a href="/conten/1/{{ i.id }}"><h2>{{ i.title }}</h2></a>
+             <p>{{ i.conten|striptags|center:"50"}}<a href="/conten/1/{{ i.id }}">阅读全文&gt;&gt;</a></p>
+             <span class="news-date">{{ i.set_time }}</span>
+           </div>
+         </li>
+
+
+        {% endfor%}
+
+
+
+       </ul>
+       <div class="Page clearfix">
+        <ul>
+         <li>首页</li>
+            {% for i in page_list %}
+
+                {% if i == index %}
+                    <li class="thisclass"><a href="/news?index={{ i }}">{{ i }}</a></li>
+
+                {% else %}
+                <li><a href="/news?index={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+<li><a href="/news?index={{ index|add:1 }}">下一页</a></li>
+<li><a href="/news?index={{ pages }}">末页</a></li>
+<li><span class="pageinfo">共 <strong>{{ pages }}</strong>页<strong>{{ conut }}</strong>条</span></li>
+
+       </ul>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+    <script>
+    $('.active').removeClass('active')
+    $('#news').addClass('active')
+    </script>
+{% endblock %}

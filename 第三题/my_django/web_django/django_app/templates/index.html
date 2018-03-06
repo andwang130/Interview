@@ -1,0 +1,149 @@
+{% extends 'templates.html' %}
+{% load staticfiles %}
+{% block mian %}
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+
+
+        <!-- Wrapper for slides -->
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <div id="content">
+        <div class="container">
+          <div class="index-box-aboutus">
+            <div class="box-title">
+              <span class="box-title-line"></span>
+              <h3>about us</h3>
+              <h2>关于<strong>我们</strong></h2>
+              <p>XXXX金融服务有限公司作为国内知名金融信息咨询服务机构，</p>
+              <p>汇集银行、证券、基金、信托等业界精英，</p>
+              <p>深度钻研于各金融领域。</p>
+            </div>
+            <div class="row aboutus-list">
+              <div class="col-lg-4 col-xs-4 animate-box" data-animate-effect="fadeInUp">
+                <span class="aboutus-service"></span>
+                <p>咨询服务周到</p>
+              </div>
+              <div class="col-lg-4 col-xs-4 animate-box" data-animate-effect="fadeInUp">
+                <span class="aboutus-resources"></span>
+                <p>行业资源丰富</p>
+              </div>
+              <div class="col-lg-4 col-xs-4 animate-box" data-animate-effect="fadeInUp">
+                <span class="aboutus-technology"></span>
+                <p>融资技术专业</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="index-box-news">
+            <div class="box-title">
+              <span class="box-title-line"></span>
+              <h3>news</h3>
+              <h2>行业<strong>新闻</strong></h2>
+            </div>
+            <div class="row news-list">
+              <div class="col-lg-5 col-xs-5">
+                <div class="news-first-box animate-box" data-animate-effect="fadeInLeft">
+                  <img src="{% static '/images/news-first-bg.jpg'%}" alt="项目融资相关新闻">
+                  <div class="news-first-text">
+                   <a href="#"><h4>详细解析PPP的歪路与正道</h4></a>
+                   <p>近两年来，不少地方政府把PPP模式搞得风生水起，可是回头看看也有不少问题，以至于财政部在近期连续发文进行规范。下面有亿升小编带您一起了解ppp的歪路与正道。</p>
+                 </div>
+
+               </div>
+             </div>
+             <div class="col-lg-7 col-xs-7">
+              <ul class="news-other-box">
+                  {% for i in article %}
+               <li class="row animate-box" data-animate-effect="fadeInRight">
+                <div class="col-lg-2 col-xs-2">
+                  <span><strong>{{ i.set_time|date:'j' }}</strong>{{ i.set_time }}</span>
+                </div>
+                <div class="col-lg-10 col-xs-10">
+                  <a href="/conten/{{ i.type_id }}/{{ i.id }}" title="房企的PPP发展模式"><h4>{{ i.title }}</h4></a>
+                  <p>{{ i.conten|striptags|center:"50" }}</p>
+
+                </div>
+              </li>
+                {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="index-box-cooperation">
+        <div class="box-title">
+          <span class="box-title-line"></span>
+          <h3>cooperation</h3>
+          <h2>商务<strong>合作</strong></h2>
+          <p>财富为客户提供投融资信息对接和项目撮配服务，成为投资者和融资者的纽带,拓展人脉资源,</p>
+          <p>开启财富之路,共享投融信息,结识投融精英,学习创业经验赢取商业机遇</p>
+        </div>
+        <div class="row cooperation-list">
+          <div class="col-lg-4 col-xs-4 col-funds animate-box" data-animate-effect="fadeInUp">
+            <a href="cooperation.html">
+              <div class="col-box">
+                <div class="icon"></div>
+                <div class="text">
+                  <p>受理范围广泛，政府平台类机构项目、PPP项目、BT项目、发改委批文重点项目等皆可受理。低利率，高效率！匹配优化，轻松引资！</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-xs-4 col-cooperation animate-box" data-animate-effect="fadeInUp">
+           <a href="cooperation.html">
+            <div class="col-box">
+              <div class="icon"></div>
+              <div class="text">
+                <p>金融市场项目繁多，但都会有自身的产品优势和适用客户群体，我们致力于为每一个融资项目量身定制一整套金融类服务。</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-xs-4 col-agency animate-box" data-animate-effect="fadeInUp">
+         <a href="regionalagency.html">
+          <div class="col-box">
+            <div class="icon"></div>
+            <div class="text">
+              <p>诚聘精英，就等你来！因公司业务发展需求，现诚招区域代理商（具有金融行业任职经验），每个市级区域仅限一名。我们热忱欢迎您的加入！</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
+<script type="text/javascript">
+  $('#carousel-example-partner').carousel({
+    interval: 3000
+  });
+    $('.active').removeClass('active')
+    $('#index').addClass('active')
+</script>
+<script src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript">
+  Pace.on("done", function(){
+    $("#myloader").fadeOut(800);
+  });
+</script>
+{% endblock %}

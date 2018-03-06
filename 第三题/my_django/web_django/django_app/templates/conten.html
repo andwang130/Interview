@@ -1,0 +1,156 @@
+{% extends 'templates.html' %}
+{% block mian %}
+    <div id="content" class="news-view-container">
+  <div class="container news-container">
+    <div class="row">
+     <div class="col-lg-12 col-xs-12">
+</div>
+<div class="col-lg-8 col-xs-8">
+
+  <div class="news-box">
+    <div class="view">
+      <h1>{{ article.title }}</h1>
+      <p class="date">发布时间：{{ article.set_time }}</p>
+    </div>
+    <div class="pagebox">
+    {{ article.conten|safe}}
+   </div>
+
+
+  <div class="viewpage">
+      {% if up %}
+   <p>上一篇：<a href="/conten/{{ type }}/{{ up.id }}">{{ up.title }}</a> </p>
+          {% else %}
+<p>上一篇：没有了 </p>
+      {% endif %}
+  {% if next %}
+        <p>上一篇：<a href="/conten/{{ type }}/{{ next.id}}">{{ next.title }}</a> </p>
+      {% else %}
+      <p>下一篇：没有了 </p>
+  {% endif %}
+
+   <a href="#" onclick="javascript:history.go(-1);" class="back">[返回列表]</a>
+ </div>
+</div>
+<div class="news-copyright">
+   <div><span>评论</span></div>
+    <div> <textarea id="conten" style="border: 0;height: 80px;width: 100%;resize: none;background:antiquewhite;"></textarea></div>
+    <div class="cmt-action">
+                    <div class="action-btn"><a style="background: #e03900; border-radius: 0 0 3px 0;position: absolute;right: 30px;" class="cmt-bt" id="btnRelease" href="javascript:;" data-top="true" data-vlaue="{{ article.id }}" data-click="false">发布</a></div>
+                </div>
+</div>
+<div class="news-copyright"id="commentsbow">
+
+</div>
+<div class="Page clearfix">
+        <ul>
+   <div class="Page clearfix" id="pagecle">
+        <ul>
+
+
+       </ul>
+     </div>
+
+       </ul>
+     </div>
+</div>
+
+<div class="col-lg-4 col-xs-4">
+  <div class="right-search-box">
+
+  </div>
+  <div class="right-hot-box">
+   <h1 class="right-box-title">热门文章</h1>
+   <ul>
+
+
+ </ul>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+</div>
+</div>
+    <script>
+        function fenye(list,index,pages,conut) {
+            var html='<li>首页</li>'
+
+        for(i in list){
+                i=list[i]
+            if(i==index) {
+                html+= '<li class="thisclass"><a href="javascript:;" data-valeu='+i+'>'+i+'</a></li>'
+            }
+            else {
+                 html+= '<li><a href="javascript:;"data-valeu='+i+' >'+i+'</a></li>'
+
+            }
+
+        }
+        html+='<li><a href="javascript:;" id="next" data-valeu='+Number(index)+1+'>下一页</a></li>' +
+            ' <li><a href=""javascript:;" data-valeu='+pages+' id="end">末页</a></li> ' +
+            '<li><span class="pageinfo">共<strong id="sumpage">'+pages+'</strong>页<strong >'+count+'</strong>条</span></li>'
+            $('#pagecle ul').html(html)
+            $('#pagecle ul li').click(
+                function () {
+                    index=$(this).find('a').attr('data-valeu')
+                    getcooment(index)
+                }
+            )
+        }
+        function commentshow(data) {
+            console.log(data)
+            var html=''
+            for(i in data){
+
+                html+=' <div>\n' +
+                    '        <span>'+data[i].publisher+'<i style="font-size: 12px;">'+data[i].set_time+'</i></span>\n' +
+                    '  <p>'+data[i].conten+'</p>\n' +
+                    '        <hr>\n' +
+                    '    </div>'
+
+            }
+             $('#commentsbow').html(html)
+
+        }
+    function getcooment (index) {
+
+        data={'index':index,'article_id':$('#btnRelease').attr('data-vlaue')}
+         $.get('/getcomment',data,function (arg) {
+              comment_data=arg.data.comment
+             commentshow(comment_data)
+             list=arg.data.page_list
+             index=arg.data.index
+             pages=arg.data.pages
+             count=arg.data.count
+             fenye(list,index,pages,count)
+
+         })
+    }
+   getcooment(1)
+    $('#btnRelease').click(function () {
+       var id=$(this).attr('data-vlaue')
+        var conten=$('#conten').val()
+        $.ajax({
+            url:'/addcomment/',
+            type:'POST',
+            dataType:'JSON',
+            data:{'id':id,'conten':conten},
+            headers:{'X-CSRFToken':'{{ csrf_token }}'},
+            success:function (arg) {
+
+
+
+
+
+            }
+        })
+
+    })
+    </script>
+{% endblock %}
